@@ -4,16 +4,26 @@ import java.util.List;
 
 public class Direccion {
 
+    int id;
     String departamento;
     String nombre_calle;
     String n_Casa;
     int telefono;
 
-    public Direccion(String departamento, String nombre_calle, String n_Casa, int telefono) {
+    public Direccion(int id, String departamento, String nombre_calle, String n_Casa, int telefono) {
+        this.id = id;
         this.departamento = departamento;
         this.nombre_calle = nombre_calle;
         this.n_Casa = n_Casa;
         this.telefono = telefono;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDepartamento() {

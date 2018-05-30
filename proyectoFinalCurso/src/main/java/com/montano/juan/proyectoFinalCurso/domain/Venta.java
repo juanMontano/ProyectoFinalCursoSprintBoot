@@ -3,6 +3,7 @@ package com.montano.juan.proyectoFinalCurso.domain;
 import java.util.List;
 
 public class Venta {
+
     Vendedor vendedor;
     List<Producto> list_productos;
 

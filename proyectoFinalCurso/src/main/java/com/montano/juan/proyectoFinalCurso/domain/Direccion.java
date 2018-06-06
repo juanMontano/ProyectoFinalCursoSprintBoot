@@ -1,16 +1,21 @@
 package com.montano.juan.proyectoFinalCurso.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
+@Document
 public class Direccion {
 
-    int id;
+    @Id
+    String id;
     String departamento;
     String nombre_calle;
     String n_Casa;
     int telefono;
 
-    public Direccion(int id, String departamento, String nombre_calle, String n_Casa, int telefono) {
+    public Direccion(String id, String departamento, String nombre_calle, String n_Casa, int telefono) {
         this.id = id;
         this.departamento = departamento;
         this.nombre_calle = nombre_calle;
@@ -18,11 +23,14 @@ public class Direccion {
         this.telefono = telefono;
     }
 
-    public int getId() {
+    public Direccion() {
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

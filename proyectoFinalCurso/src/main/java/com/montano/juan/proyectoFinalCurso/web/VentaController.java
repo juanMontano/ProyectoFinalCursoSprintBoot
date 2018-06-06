@@ -5,10 +5,7 @@ import com.montano.juan.proyectoFinalCurso.domain.Venta;
 import com.montano.juan.proyectoFinalCurso.service.VentaService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,14 +16,25 @@ public class VentaController {
 
     @Autowired
     VentaService ventaService;
-
+    //listar
     @RequestMapping(method = RequestMethod.GET)
     public List<Venta> getAllVentas() {
         return ventaService.getAllVentas();
     }
-
+    //añadir
     @RequestMapping(method = RequestMethod.POST)
     public void addNewVenta(@RequestBody Venta venta){
         ventaService.addNewVenta(venta);
+    }
+    //eliminar
+    @RequestMapping(path = "/{id}",method = RequestMethod.DELETE)
+    public void eliminarVenta(@PathVariable String id){
+        ventaService.elimnarVenta(id);
+    }
+    //actualizar
+    @RequestMapping(method = RequestMethod.PATCH)
+    public void actualizarVenta(@RequestBody Venta ventaUpdate){
+        ventaService.actulizarVenta(ventaUpdate);
+
     }
 }

@@ -1,31 +1,35 @@
 package com.montano.juan.proyectoFinalCurso.service;
 
-import com.montano.juan.proyectoFinalCurso.domain.Direccion;
-import com.montano.juan.proyectoFinalCurso.domain.Producto;
-import com.montano.juan.proyectoFinalCurso.domain.Vendedor;
 import com.montano.juan.proyectoFinalCurso.domain.Venta;
+import com.montano.juan.proyectoFinalCurso.repository.VentaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class VentaService {
-    private List<Venta> listaVentas=new ArrayList<>();
-    private List<Producto> listaProduct=new ArrayList<>();
-    private Vendedor vendedor= new Vendedor("jose",new Direccion(4,"cochabamba","petrolera","125",124587));
 
-    public VentaService(){
-        listaProduct.add(new Producto("mandarina",2));
-        listaProduct.add(new Producto("platano",5));
-        listaVentas.add(new Venta(vendedor,listaProduct));
+    @Autowired
+    private VentaRepository ventaRepository;
+
+    public VentaService() {
     }
 
-    public List<Venta> getAllVentas(){
-        return listaVentas;
+    //listar
+    public List<Venta> getAllVentas() {
+        return ventaRepository.findAll();
     }
-
-    public void addNewVenta(Venta venta){
-        listaVentas.add(venta);
+    //añadir
+    public void addNewVenta(Venta venta) {
+        ventaRepository.save(venta);
+    }
+    //eliminar
+    public void elimnarVenta(String id){
+        ventaRepository.deleteById(id);
+    }
+    //actulizar
+    public void actulizarVenta(Venta ventaUpdate){
+        ventaRepository.save(ventaUpdate);
     }
 }

@@ -16,19 +16,30 @@ public class DireccionController {
     @Autowired
     DireccionService direccionService;
 
+    //listar
     @RequestMapping(method = RequestMethod.GET)
     public List<Direccion> getDirections(){
         return direccionService.getAllDirection();
     }
-
+    //añadir
     @RequestMapping(method = RequestMethod.POST)
     public void addNewDirection(@RequestBody Direccion direccion){
         direccionService.addNewDirection(direccion);
     }
-
+    //eliminar
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-    public void deleteDirection(@PathVariable int id){
-        direccionService.deleteDirection(id);
+    public void deleteDirectionById(@PathVariable String id){
+        direccionService.deleteDirectionById(id);
+    }
+
+    //actualizar
+    @RequestMapping(method = RequestMethod.PATCH)
+    public void actualizarDirection(@RequestBody Direccion direccionUpdate){
+        direccionService.actualizarDirection(direccionUpdate);
+    }
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteDirection(@RequestBody Direccion direccion){
+        direccionService.deleteDirection(direccion);
     }
 
 }

@@ -1,5 +1,8 @@
 package com.montano.juan.proyectoFinalCurso.domain;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Producto {
 
     String nombre_producto;
@@ -8,6 +11,9 @@ public class Producto {
     public Producto(String nombre_producto, int precio) {
         this.nombre_producto = nombre_producto;
         Precio = precio;
+    }
+
+    public Producto() {
     }
 
     public String getNombre_producto() {
